@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CoursesModelStoreContainer" CdmEntityContainer="CoursesEntities">
+    <EntitySetMapping Name="class_tracker">
+      <EntityTypeMapping TypeName="CoursesModel.class_tracker">
+        <MappingFragment StoreEntitySet="class_tracker">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="course" ColumnName="course" />
+          <ScalarProperty Name="semester" ColumnName="semester" />
+          <ScalarProperty Name="date_due" ColumnName="date_due" />
+          <ScalarProperty Name="importance" ColumnName="importance" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

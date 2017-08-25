@@ -1,0 +1,70 @@
+﻿<Window x:Class="ClassTracker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClassTracker"
+        mc:Ignorable="d"
+        Title="Class Tracker" Height="700" Width="1100">
+    <DockPanel Margin="5">
+        <TabControl DockPanel.Dock="Right" SelectedIndex="0">
+            <TabItem Header="Filter Classes">
+                <StackPanel Width="300" Margin="4,0,0,0">
+                    <TextBlock Text="Filter List By Class" FontSize="16" FontWeight="Black" HorizontalAlignment="Center" />
+                    <WrapPanel>
+                        <TextBlock Text="Select Class: " FontWeight="Bold" Margin="2,7,0,0"/>
+                        <ComboBox Width="200" Margin="5,5,0,0" ItemsSource="{Binding EnrolledClasses, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedFilterClass, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </WrapPanel>
+                    <Button Content="Filter" Width="125" Margin="125, 10, 0, 0" Command="{Binding FilterCommand}" />
+                    <Image Width="245" Height="200" Margin="0,150,0,0">
+                        <Image.Source>
+                            <BitmapImage DecodePixelWidth="245" DecodePixelHeight="200" UriSource="/Resources/western.jpg" />
+                        </Image.Source>
+                    </Image>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Add Due Item">
+                <StackPanel DockPanel.Dock="Right" Margin="4,0,0,0" Width="300">
+                    <TextBlock Text="Create A New Due Item" HorizontalAlignment="Center" FontWeight="Black" Margin="0,5,0,8" FontSize="16"/>
+                    <WrapPanel>
+                        <TextBlock Text="Course: " FontWeight="Bold" Margin="2,7,0,0"/>
+                        <ComboBox Width="200" Margin="35,5,0,0" ItemsSource="{Binding EnrolledClasses, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding ClassName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </WrapPanel>
+                    <WrapPanel>
+                        <TextBlock Text="Date Due: " FontWeight="Bold" Margin="2,7,0,0" />
+                        <TextBox Margin="21,5,0,0" Width="200" Text="{Binding DateDue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    </WrapPanel>
+                    <WrapPanel>
+                        <TextBlock Text="Importance: " FontWeight="Bold" Margin="2,7,0,0"/>
+                        <ComboBox Width="200" Margin="8,5,0,0" ItemsSource="{Binding ImportanceList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Importance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    </WrapPanel>
+                    <Button Content="Create Due Item" Width="125" Margin="125, 15, 0, 0" Command="{Binding CreateCommand}"/>
+                    <Image Width="245" Height="200" Margin="0,82,0,0">
+                        <Image.Source>
+                            <BitmapImage DecodePixelWidth="245" DecodePixelHeight="200" UriSource="/Resources/western.jpg" />
+                        </Image.Source>
+                    </Image>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Delete Due Item">
+                <StackPanel Width="300" Margin="4,0,0,0">
+                    <TextBlock Text="Delete the Selected User" HorizontalAlignment="Center" Margin="0,10,0,0" FontWeight="Black" FontSize="16"/>
+                    <Button Content="Delete" Width="125" Margin="125,15,0,0" Command="{Binding DeleteCommand}" />
+                    <Image Width="245" Height="200" Margin="0,162,0,0">
+                        <Image.Source>
+                            <BitmapImage DecodePixelWidth="245" DecodePixelHeight="200" UriSource="/Resources/western.jpg" />
+                        </Image.Source>
+                    </Image>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+        <DataGrid x:FieldModifier="public" x:Name="Classes" CanUserAddRows="False" AutoGenerateColumns="False" CanUserResizeColumns="False" AlternatingRowBackground="LightBlue" ItemsSource="{Binding Classes}" SelectedItem="{Binding SelectedClass}" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="200" Header="Course" Binding="{Binding course, Mode=TwoWay}" IsReadOnly="True"/>
+                <DataGridTextColumn Width="200" Header="Semester" Binding="{Binding semester, Mode=TwoWay}" IsReadOnly="True"/>
+                <DataGridTextColumn Width="200" Header="Date Due" Binding="{Binding date_due, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Width="200" Header="Importance" Binding="{Binding importance, Mode=TwoWay}" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</Window>

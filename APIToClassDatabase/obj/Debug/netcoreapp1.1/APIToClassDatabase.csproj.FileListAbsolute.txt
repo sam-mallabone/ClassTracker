@@ -1,0 +1,11 @@
+c:\users\sam\documents\visual studio 2017\Projects\ClassTracker\APIToClassDatabase\bin\Debug\netcoreapp1.1\APIToClassDatabase.deps.json
+c:\users\sam\documents\visual studio 2017\Projects\ClassTracker\APIToClassDatabase\bin\Debug\netcoreapp1.1\APIToClassDatabase.runtimeconfig.json
+c:\users\sam\documents\visual studio 2017\Projects\ClassTracker\APIToClassDatabase\bin\Debug\netcoreapp1.1\APIToClassDatabase.runtimeconfig.dev.json
+c:\users\sam\documents\visual studio 2017\Projects\ClassTracker\APIToClassDatabase\bin\Debug\netcoreapp1.1\APIToClassDatabase.dll
+c:\users\sam\documents\visual studio 2017\Projects\ClassTracker\APIToClassDatabase\obj\Debug\netcoreapp1.1\APIToClassDatabase.csprojResolveAssemblyReference.cache
+c:\users\sam\documents\visual studio 2017\Projects\ClassTracker\APIToClassDatabase\obj\Debug\netcoreapp1.1\APIToClassDatabase.AssemblyInfo.cs
+c:\users\sam\documents\visual studio 2017\Projects\ClassTracker\APIToClassDatabase\bin\Debug\netcoreapp1.1\APIToClassDatabase.pdb
+c:\users\sam\documents\visual studio 2017\Projects\ClassTracker\APIToClassDatabase\obj\Debug\netcoreapp1.1\APIToClassDatabase.dll
+c:\users\sam\documents\visual studio 2017\Projects\ClassTracker\APIToClassDatabase\obj\Debug\netcoreapp1.1\APIToClassDatabase.pdb
+C:\Users\Sam\documents\visual studio 2017\Projects\ClassTracker\APIToClassDatabase\obj\Debug\netcoreapp1.1\APIToClassDatabase.csproj.CoreCompileInputs.cache
+C:\Users\Sam\documents\visual studio 2017\Projects\ClassTracker\APIToClassDatabase\bin\Debug\netcoreapp1.1\APIToClassDatabase.xml

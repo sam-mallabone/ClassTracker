@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>APIToClassDatabase</name>
+    </assembly>
+    <members>
+        <member name="M:APIToClassDatabase.Controllers.ClassController.GetAll">
+            <summary>
+            Get all assignments/tests that are due
+            </summary>
+            <remarks>
+            returns a List of all assignments/ tests that are due
+            </remarks>
+            <returns>an IEnumerable of ClassTracker</returns>
+        </member>
+        <member name="M:APIToClassDatabase.Controllers.ClassController.PostClass(APIToClassDatabase.Models.ClassTracker)">
+            <summary>
+            Post a new Item thats due to the database
+            </summary>
+            <remarks>
+            Creating a new Item due and adding it to the database
+            </remarks>
+            <response code="400">if the class passed in is null</response>
+            <response code="500">if there was a problem saving the item to the database</response>
+            <response code="201">if the class was successfully created and added</response>
+            <param name="newClass">the new item that is going to be added to the database</param>
+            <returns>A status code and an object</returns>
+        </member>
+        <member name="M:APIToClassDatabase.Controllers.ClassController.PatchClass(System.String,System.String,System.Int32)">
+            <summary>
+            Patch an existing Item in the database
+            </summary>
+            <remarks>
+            Updates an existing Item
+            </remarks>
+            <response code="404">if the item couldn't be found</response>
+            <response code="500">if the item couldn't be saved to the database properly</response>
+            <response code="204">the item was successfully saved</response>
+            <param name="newDateDue">The new date that the Item is due</param>
+            <param name="newImportance">The new level of importance</param>
+            <param name="courseID">The unique ID of the course, this is used to retrieve the course from the database</param>
+            <returns>a Status Code and an object</returns>
+        </member>
+    </members>
+</doc>
