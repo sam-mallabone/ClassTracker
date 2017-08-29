@@ -11,13 +11,16 @@ namespace ClassTracker.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class class_tracker
+    using System.ComponentModel;
+    using System.Linq;
+
+    public partial class DueItem
     {
         public int id { get; set; }
-        public string course { get; set; }
-        public string semester { get; set; }
-        public string date_due { get; set; }
-        public string importance { get; set; }
+        public string Class { get; set; }
+        public System.DateTime Date_Due { get; set; }
+        public string Semester { get; set; }
+        public string Importance { get; set; }
+        public string Description { get; set; }
     }
 }

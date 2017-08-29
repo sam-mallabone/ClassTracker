@@ -7,17 +7,15 @@ using ClassTracker.Models;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Microsoft.Practices.Prism.Commands;
-using System.Net.Http;
-using System.Net.Http.Formatting;
-using System.Windows;
 using ClassTracker.ExtensionMethods;
+using ClassTracker.Interfaces;
 
 namespace ClassTracker.ViewModels
 {
-    class MainWindowViewModel
+    class MainWindowViewModel : IViewModel
     {
-        private CoursesEntities databaseConnection;
-        public ObservableCollection<class_tracker> Classes { get; set; }
+        private CourseEntities databaseConnection;
+        public ObservableCollection<DueItem> Classes { get; set; }
         public List<string> EnrolledClasses { get; set; }
         public List<string> ImportanceList { get; set; }
             
@@ -33,10 +31,13 @@ namespace ClassTracker.ViewModels
 
         public void InitializeComponents()
         {
-            using (databaseConnection = new CoursesEntities())
+            using (databaseConnection = new CourseEntities())
             {
-                var classList = databaseConnection.class_tracker.OrderBy(c => c.course).ToList();
-                Classes = new ObservableCollection<class_tracker>(classList);
+                var classList = databaseConnection.DueItems
+                                    .OrderBy(c => c.Date_Due)
+                                        .ToList();
+
+                Classes = new ObservableCollection<DueItem>(classList);
             }
 
             var list = FillEnrollClasses();
@@ -50,8 +51,8 @@ namespace ClassTracker.ViewModels
             };
         }
 
-        private class_tracker selectedClass;
-        public class_tracker SelectedClass
+        private DueItem selectedClass;
+        public DueItem SelectedClass
         {
             get
             {
@@ -91,6 +92,20 @@ namespace ClassTracker.ViewModels
             {
                 dateDue = value;
                 CheckIfCanAdd();
+                
+            }
+        }
+
+        private string description;
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+            set
+            {
+                description = value;
             }
         }
 
@@ -124,25 +139,28 @@ namespace ClassTracker.ViewModels
 
         #endregion
 
+        #region Filter Method
+
         private DelegateCommand filterCommand;
         public ICommand FilterCommand => filterCommand;
         private void FilterListExecute()
         {
-            
+
             if (SelectedFilterClass == null)
                 throw new InvalidOperationException($"{nameof(SelectedFilterClass)} is null");
 
             Classes.Clear();
 
-            using (databaseConnection = new CoursesEntities())
+            using (databaseConnection = new CourseEntities())
             {
-                var filterList = databaseConnection.class_tracker
-                                    .Where(x => x.course == SelectedFilterClass)
+                var filterList = databaseConnection.DueItems
+                                    .Where(x => x.Class == SelectedFilterClass)
                                         .ToList();
 
-                Classes.AddRange<class_tracker>(filterList);
+                Classes.AddRange<DueItem>(filterList);
             }
-        }
+        } 
+        #endregion
 
         #region Create Method
         private readonly DelegateCommand createCommand;
@@ -151,6 +169,16 @@ namespace ClassTracker.ViewModels
         {
             if (ClassName == null && DateDue == null && Importance == null)
                 throw new InvalidOperationException($"{nameof(ClassName)}, {nameof(DateDue)} or {nameof(Importance)} is null");
+
+            DateTime formatDateDue;
+            try
+            {
+                formatDateDue = DateTime.Parse(DateDue);
+            }
+            catch(Exception ex)
+            {
+                throw new FormatException("The Date Due was in a bad format", ex);
+            }
 
             var charArray = ClassName.ToArray();
             var getSemester = charArray.Last();
@@ -169,31 +197,48 @@ namespace ClassTracker.ViewModels
                     return;
             }
 
-            var addClass = new class_tracker()
+            var addClass = new DueItem()
             {
-                course = ClassName,
-                semester = semester,
-                date_due = DateDue,
-                importance = Importance
+                Class = ClassName,
+                Semester = semester,
+                Date_Due = formatDateDue,
+                Importance = Importance,
+                Description = Description
             };
 
-            using (databaseConnection = new CoursesEntities())
+            using (databaseConnection = new CourseEntities())
             {
-                databaseConnection.class_tracker.Add(addClass);
+                databaseConnection.DueItems.Add(addClass);
                 databaseConnection.SaveChanges();
             }
 
             Refresh();
-        } 
+        }
         #endregion
+
+        #region Update Method
 
         private DelegateCommand updateCommand;
         public ICommand UpdateCommand => updateCommand;
         public void UpdateClass()
         {
-            databaseConnection.class_tracker.Attach(SelectedClass);
-            databaseConnection.SaveChanges();
+            using (databaseConnection = new CourseEntities())
+            {
+                var updateClass = databaseConnection.DueItems
+                                       .Where(x => x.id == SelectedClass.id)
+                                            .FirstOrDefault();
+
+                if (updateClass.Date_Due != SelectedClass.Date_Due)
+                    updateClass.Date_Due = SelectedClass.Date_Due;
+
+                if (updateClass.Description != SelectedClass.Description)
+                    updateClass.Description = SelectedClass.Description;
+
+                databaseConnection.SaveChanges();
+            }
         }
+
+        #endregion
 
         #region DeleteCommand
         private DelegateCommand deleteCommand;
@@ -202,10 +247,10 @@ namespace ClassTracker.ViewModels
         {
             if (SelectedClass == null) { throw new InvalidOperationException($"{nameof(SelectedClass)} is null"); }
 
-            using (databaseConnection = new CoursesEntities())
+            using (databaseConnection = new CourseEntities())
             {
-                databaseConnection.class_tracker.Attach(SelectedClass);
-                databaseConnection.class_tracker.Remove(SelectedClass);
+                databaseConnection.DueItems.Attach(SelectedClass);
+                databaseConnection.DueItems.Remove(SelectedClass);
                 databaseConnection.SaveChanges();
             }
             Refresh();
@@ -217,12 +262,12 @@ namespace ClassTracker.ViewModels
         private void Refresh()
         {
             Classes.Clear();
-            using (databaseConnection = new CoursesEntities())
+            using (databaseConnection = new CourseEntities())
             {
-                var classList = databaseConnection.class_tracker
-                                    .OrderBy(c => c.course);
+                var classList = databaseConnection.DueItems
+                                    .OrderBy(c => c.Date_Due);
 
-                Classes.AddRange<class_tracker>(classList);
+                Classes.AddRange<DueItem>(classList);
             }
         }
 

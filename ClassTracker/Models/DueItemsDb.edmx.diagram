@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b0c09a54f0cb43dfb751d699f726a94a" Name="Diagram1">
-        <EntityTypeShape EntityType="CoursesModel.class_tracker" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="67d680392b7d4ac084b3fed8659fd799" Name="Diagram1">
+        <EntityTypeShape EntityType="CoursesModel.DueItem" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

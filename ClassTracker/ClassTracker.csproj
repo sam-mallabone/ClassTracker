@@ -73,6 +73,7 @@
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -100,24 +101,26 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ExtensionMethods\ExtensionMethods.cs" />
-    <Compile Include="Models\class_tracker.cs">
-      <DependentUpon>CourseDatabase.tt</DependentUpon>
+    <Compile Include="Interfaces\IViewModel.cs" />
+    <Compile Include="Models\DueItem.cs">
+      <DependentUpon>DueItemsDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CourseDatabase.Context.cs">
+    <Compile Include="Models\DueItemsDb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CourseDatabase.Context.tt</DependentUpon>
+      <DependentUpon>DueItemsDb.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CourseDatabase.cs">
+    <Compile Include="Models\DueItemsDb.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CourseDatabase.tt</DependentUpon>
+      <DependentUpon>DueItemsDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CourseDatabase.Designer.cs">
+    <Compile Include="Models\DueItemsDb.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CourseDatabase.edmx</DependentUpon>
+      <DependentUpon>DueItemsDb.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\DescriptionViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -142,12 +145,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Models\CourseDatabase.edmx">
+    <EntityDeploy Include="Models\DueItemsDb.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CourseDatabase.Designer.cs</LastGenOutput>
+      <LastGenOutput>DueItemsDb.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\CourseDatabase.edmx.diagram">
-      <DependentUpon>CourseDatabase.edmx</DependentUpon>
+    <None Include="Models\DueItemsDb.edmx.diagram">
+      <DependentUpon>DueItemsDb.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -159,20 +162,23 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\CourseDatabase.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CourseDatabase.Context.cs</LastGenOutput>
-      <DependentUpon>CourseDatabase.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\CourseDatabase.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CourseDatabase.edmx</DependentUpon>
-      <LastGenOutput>CourseDatabase.cs</LastGenOutput>
-    </Content>
     <Resource Include="Resources\western.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Models\DueItemsDb.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DueItemsDb.edmx</DependentUpon>
+      <LastGenOutput>DueItemsDb.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DueItemsDb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DueItemsDb.edmx</DependentUpon>
+      <LastGenOutput>DueItemsDb.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

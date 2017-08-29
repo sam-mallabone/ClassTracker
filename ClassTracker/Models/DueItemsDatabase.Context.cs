@@ -13,10 +13,10 @@ namespace ClassTracker.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CoursesEntities : DbContext
+    public partial class CourseContext : DbContext
     {
-        public CoursesEntities()
-            : base("name=CoursesEntities")
+        public CourseContext()
+            : base("name=CourseContext")
         {
         }
     
@@ -25,6 +25,6 @@ namespace ClassTracker.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<class_tracker> class_tracker { get; set; }
+        public virtual DbSet<DueItem> DueItems { get; set; }
     }
 }

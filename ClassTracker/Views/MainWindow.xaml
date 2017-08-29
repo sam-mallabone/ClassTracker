@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:local="clr-namespace:ClassTracker"
         mc:Ignorable="d"
         Title="Class Tracker" Height="700" Width="1100">
@@ -38,8 +39,12 @@
                         <TextBlock Text="Importance: " FontWeight="Bold" Margin="2,7,0,0"/>
                         <ComboBox Width="200" Margin="8,5,0,0" ItemsSource="{Binding ImportanceList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Importance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     </WrapPanel>
+                    <WrapPanel>
+                        <TextBlock Text="Description : " FontWeight="Bold" Margin="2,7,0,0"/>
+                        <TextBox Margin="5,5,0,0" Width="200" Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </WrapPanel>
                     <Button Content="Create Due Item" Width="125" Margin="125, 15, 0, 0" Command="{Binding CreateCommand}"/>
-                    <Image Width="245" Height="200" Margin="0,82,0,0">
+                    <Image Width="245" Height="200" Margin="0,59,0,0">
                         <Image.Source>
                             <BitmapImage DecodePixelWidth="245" DecodePixelHeight="200" UriSource="/Resources/western.jpg" />
                         </Image.Source>
@@ -58,12 +63,18 @@
                 </StackPanel>
             </TabItem>
         </TabControl>
-        <DataGrid x:FieldModifier="public" x:Name="Classes" CanUserAddRows="False" AutoGenerateColumns="False" CanUserResizeColumns="False" AlternatingRowBackground="LightBlue" ItemsSource="{Binding Classes}" SelectedItem="{Binding SelectedClass}" >
+        <DataGrid x:FieldModifier="public" x:Name="Classes" CanUserAddRows="False" AutoGenerateColumns="False" CanUserResizeColumns="False" AlternatingRowBackground="LightBlue" ItemsSource="{Binding Classes, Mode=TwoWay}" SelectedItem="{Binding SelectedClass}" >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="CellEditEnding">
+                    <i:InvokeCommandAction Command="{Binding UpdateCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
             <DataGrid.Columns>
-                <DataGridTextColumn Width="200" Header="Course" Binding="{Binding course, Mode=TwoWay}" IsReadOnly="True"/>
-                <DataGridTextColumn Width="200" Header="Semester" Binding="{Binding semester, Mode=TwoWay}" IsReadOnly="True"/>
-                <DataGridTextColumn Width="200" Header="Date Due" Binding="{Binding date_due, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                <DataGridTextColumn Width="200" Header="Importance" Binding="{Binding importance, Mode=TwoWay}" IsReadOnly="True"/>
+                <DataGridTextColumn Width="150" Header="Class" Binding="{Binding Class, Mode=TwoWay}" IsReadOnly="True"/>
+                <DataGridTextColumn Width="100" Header="Semester" Binding="{Binding Semester, Mode=TwoWay}" IsReadOnly="True"/>
+                <DataGridTextColumn Width="200" Header="Date Due" Binding="{Binding Date_Due, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
+                <DataGridTextColumn Width="100" Header="Importance" Binding="{Binding Importance, Mode=TwoWay}" IsReadOnly="True"/>
+                <DataGridTextColumn Width="250" Header="Description" Binding="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
             </DataGrid.Columns>
         </DataGrid>
     </DockPanel>

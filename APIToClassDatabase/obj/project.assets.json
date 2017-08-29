@@ -10455,11 +10455,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sam\\documents\\visual studio 2017\\Projects\\ClassTracker\\APIToClassDatabase\\APIToClassDatabase.csproj",
+      "projectUniqueName": "C:\\Users\\Sam\\Documents\\Visual Studio 2017\\Projects\\ClassTracker\\APIToClassDatabase\\APIToClassDatabase.csproj",
       "projectName": "APIToClassDatabase",
-      "projectPath": "C:\\Users\\Sam\\documents\\visual studio 2017\\Projects\\ClassTracker\\APIToClassDatabase\\APIToClassDatabase.csproj",
+      "projectPath": "C:\\Users\\Sam\\Documents\\Visual Studio 2017\\Projects\\ClassTracker\\APIToClassDatabase\\APIToClassDatabase.csproj",
       "packagesPath": "C:\\Users\\Sam\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sam\\documents\\visual studio 2017\\Projects\\ClassTracker\\APIToClassDatabase\\obj\\",
+      "outputPath": "C:\\Users\\Sam\\Documents\\Visual Studio 2017\\Projects\\ClassTracker\\APIToClassDatabase\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Sam\\AppData\\Roaming\\NuGet\\NuGet.Config",

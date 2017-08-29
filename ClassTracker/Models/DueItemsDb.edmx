@@ -5,51 +5,54 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="CoursesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="class_tracker">
+        <EntityType Name="DueItem">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="course" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="semester" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="date_due" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="importance" Type="nchar" MaxLength="10" />
+          <Property Name="Class" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Date Due" Type="datetime" Nullable="false" />
+          <Property Name="Semester" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Importance" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityContainer Name="CoursesModelStoreContainer">
-          <EntitySet Name="class_tracker" EntityType="Self.class_tracker" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DueItem" EntityType="Self.DueItem" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CoursesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="class_tracker">
+        <EntityType Name="DueItem">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="course" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="semester" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="date_due" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="importance" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Class" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date_Due" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Semester" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Importance" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="CoursesEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="class_tracker" EntityType="Self.class_tracker" />
+        <EntityContainer Name="CourseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DueItems" EntityType="Self.DueItem" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CoursesModelStoreContainer" CdmEntityContainer="CoursesEntities">
-          <EntitySetMapping Name="class_tracker">
-            <EntityTypeMapping TypeName="CoursesModel.class_tracker">
-              <MappingFragment StoreEntitySet="class_tracker">
+        <EntityContainerMapping StorageEntityContainer="CoursesModelStoreContainer" CdmEntityContainer="CourseEntities">
+          <EntitySetMapping Name="DueItems">
+            <EntityTypeMapping TypeName="CoursesModel.DueItem">
+              <MappingFragment StoreEntitySet="DueItem">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="course" ColumnName="course" />
-                <ScalarProperty Name="semester" ColumnName="semester" />
-                <ScalarProperty Name="date_due" ColumnName="date_due" />
-                <ScalarProperty Name="importance" ColumnName="importance" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="Date_Due" ColumnName="Date Due" />
+                <ScalarProperty Name="Semester" ColumnName="Semester" />
+                <ScalarProperty Name="Importance" ColumnName="Importance" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
