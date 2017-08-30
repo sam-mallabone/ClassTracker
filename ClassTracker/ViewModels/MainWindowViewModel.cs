@@ -27,6 +27,7 @@ namespace ClassTracker.ViewModels
             this.filterCommand = new DelegateCommand(FilterListExecute, () => (SelectedFilterClass != null));
             
             InitializeComponents();
+            
         }
 
         public void InitializeComponents()

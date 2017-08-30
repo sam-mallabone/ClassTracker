@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         Title="Class Tracker" Height="700" Width="1100">
     <DockPanel Margin="5">
+        <Frame x:Name="_mainFrame" />
         <TabControl DockPanel.Dock="Right" SelectedIndex="0">
             <TabItem Header="Filter Classes">
                 <StackPanel Width="300" Margin="4,0,0,0">
