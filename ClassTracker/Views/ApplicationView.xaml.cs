@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassTracker.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,12 @@ namespace ClassTracker.Views
     /// </summary>
     public partial class ApplicationView : Window
     {
+        private ApplicationViewModel viewModel;
         public ApplicationView()
         {
             InitializeComponent();
+            this.viewModel = new ApplicationViewModel();
+            this.DataContext = viewModel;
         }
     }
 }

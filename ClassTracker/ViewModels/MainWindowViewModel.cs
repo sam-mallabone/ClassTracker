@@ -18,18 +18,18 @@ namespace ClassTracker.ViewModels
         public ObservableCollection<DueItem> Classes { get; set; }
         public List<string> EnrolledClasses { get; set; }
         public List<string> ImportanceList { get; set; }
+        
             
         public MainWindowViewModel()
         {
             this.createCommand = new DelegateCommand(CreateMethod, () => (ClassName != null && DateDue != null && Importance != null));
             this.deleteCommand = new DelegateCommand(DeleteClass, () => (SelectedClass != null));
-            this.updateCommand = new DelegateCommand(UpdateClass, () => true);
+            this.updateCommand = new DelegateCommand(UpdateClass);
             this.filterCommand = new DelegateCommand(FilterListExecute, () => (SelectedFilterClass != null));
             
             InitializeComponents();
-            
         }
-
+        
         public void InitializeComponents()
         {
             using (databaseConnection = new CourseEntities())
@@ -156,7 +156,8 @@ namespace ClassTracker.ViewModels
             {
                 var filterList = databaseConnection.DueItems
                                     .Where(x => x.Class == SelectedFilterClass)
-                                        .ToList();
+                                        .OrderBy(x => x.Date_Due)
+                                            .ToList();
 
                 Classes.AddRange<DueItem>(filterList);
             }
@@ -236,6 +237,8 @@ namespace ClassTracker.ViewModels
                     updateClass.Description = SelectedClass.Description;
 
                 databaseConnection.SaveChanges();
+
+                Refresh();
             }
         }
 
@@ -294,7 +297,8 @@ namespace ClassTracker.ViewModels
                 "SE 3314b",
                 "SE 3351b",
                 "SE 3353b",
-                "SE 3350b"
+                "SE 3350b",
+                "Other"
             };
 
             return list;

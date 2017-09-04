@@ -29,5 +29,5 @@ namespace ClassTracker
             this.viewModel = new MainWindowViewModel();
             this.DataContext = viewModel;
         }
-   
+    }
 }

@@ -12,6 +12,7 @@ namespace ClassTracker.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.Globalization;
     using System.Linq;
 
     public partial class DueItem
@@ -22,5 +23,49 @@ namespace ClassTracker.Models
         public string Semester { get; set; }
         public string Importance { get; set; }
         public string Description { get; set; }
+        public string Date_Due_Formatted
+        {
+            get
+            {
+                return Date_Due.ToLongDateString();
+            }
+            set
+            {
+                var dateTime = DateTime.ParseExact(value, "D", CultureInfo.CurrentCulture);
+                Date_Due = dateTime;
+            }
+        }
+
+        /// <summary>
+        /// This is used to set the row of the colours, depending on when the item is due, the colour reflects the urgency
+        /// </summary>
+        public int DueSoon
+        {
+            get
+            {
+                var difference = (Date_Due - DateTime.Now).TotalDays;
+
+                if (difference <= -1)
+                {
+                    //The Item is Overdue
+                    return 0;
+                }
+                else if(difference < 4)
+                {
+                    //The Item is Urgent
+                    return 1;
+                }
+                else if(difference < 7)
+                {
+                    //The Item is SomeWhat Urgent
+                    return 2;
+                }
+                else
+                {
+                    //The Item has no Urgency
+                    return 3;
+                }
+            }
+        }
     }
 }

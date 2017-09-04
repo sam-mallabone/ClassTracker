@@ -46,3 +46,7 @@ C:\Users\Sam\documents\visual studio 2017\Projects\ClassTracker\ClassTracker\bin
 C:\Users\Sam\documents\visual studio 2017\Projects\ClassTracker\ClassTracker\bin\Debug\System.Net.Http.Formatting.dll
 C:\Users\Sam\documents\visual studio 2017\Projects\ClassTracker\ClassTracker\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Sam\documents\visual studio 2017\Projects\ClassTracker\ClassTracker\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\Sam\Documents\Visual Studio 2017\Projects\ClassTracker\ClassTracker\obj\Debug\Views\ApplicationView.g.cs
+C:\Users\Sam\Documents\Visual Studio 2017\Projects\ClassTracker\ClassTracker\obj\Debug\Views\DescriptionView.g.cs
+C:\Users\Sam\Documents\Visual Studio 2017\Projects\ClassTracker\ClassTracker\obj\Debug\Views\ApplicationView.baml
+C:\Users\Sam\Documents\Visual Studio 2017\Projects\ClassTracker\ClassTracker\obj\Debug\Views\DescriptionView.baml
