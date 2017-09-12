@@ -16,8 +16,6 @@ C:\Users\Sam\documents\visual studio 2017\Projects\ClassTracker\ClassTracker\bin
 C:\Users\Sam\documents\visual studio 2017\Projects\ClassTracker\ClassTracker\bin\Debug\EntityFramework.xml
 C:\Users\Sam\documents\visual studio 2017\Projects\ClassTracker\ClassTracker\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Sam\documents\visual studio 2017\Projects\ClassTracker\ClassTracker\obj\Debug\ClassTracker_Content.g.cs
-C:\Users\Sam\documents\visual studio 2017\Projects\ClassTracker\ClassTracker\obj\Debug\Views\MainWindow.g.cs
-C:\Users\Sam\documents\visual studio 2017\Projects\ClassTracker\ClassTracker\obj\Debug\Views\MainWindow.baml
 C:\Users\Sam\documents\visual studio 2017\Projects\ClassTracker\ClassTracker\bin\Debug\Microsoft.Practices.Prism.Composition.dll
 C:\Users\Sam\documents\visual studio 2017\Projects\ClassTracker\ClassTracker\bin\Debug\Microsoft.Practices.Prism.Interactivity.dll
 C:\Users\Sam\documents\visual studio 2017\Projects\ClassTracker\ClassTracker\bin\Debug\Microsoft.Practices.Prism.Mvvm.Desktop.dll
@@ -47,6 +45,11 @@ C:\Users\Sam\documents\visual studio 2017\Projects\ClassTracker\ClassTracker\bin
 C:\Users\Sam\documents\visual studio 2017\Projects\ClassTracker\ClassTracker\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Sam\documents\visual studio 2017\Projects\ClassTracker\ClassTracker\bin\Debug\System.Net.Http.Formatting.xml
 C:\Users\Sam\Documents\Visual Studio 2017\Projects\ClassTracker\ClassTracker\obj\Debug\Views\ApplicationView.g.cs
-C:\Users\Sam\Documents\Visual Studio 2017\Projects\ClassTracker\ClassTracker\obj\Debug\Views\DescriptionView.g.cs
 C:\Users\Sam\Documents\Visual Studio 2017\Projects\ClassTracker\ClassTracker\obj\Debug\Views\ApplicationView.baml
+C:\Users\Sam\Documents\Visual Studio 2017\Projects\ClassTracker\ClassTracker\obj\Debug\Views\DueListView.g.cs
+C:\Users\Sam\Documents\Visual Studio 2017\Projects\ClassTracker\ClassTracker\obj\Debug\Views\DueListView.baml
+C:\Users\Sam\Documents\Visual Studio 2017\Projects\ClassTracker\ClassTracker\obj\Debug\Views\DescriptionView.g.cs
+C:\Users\Sam\Documents\Visual Studio 2017\Projects\ClassTracker\ClassTracker\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Sam\Documents\Visual Studio 2017\Projects\ClassTracker\ClassTracker\obj\Debug\Views\DescriptionView.baml
+C:\Users\Sam\Documents\Visual Studio 2017\Projects\ClassTracker\ClassTracker\obj\Debug\Views\ScheduleView.g.cs
+C:\Users\Sam\Documents\Visual Studio 2017\Projects\ClassTracker\ClassTracker\obj\Debug\Views\ScheduleView.baml

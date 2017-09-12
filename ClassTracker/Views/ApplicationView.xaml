@@ -4,9 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClassTracker.Views"
+        xmlns:local2="clr-namespace:ClassTracker.ViewModels"
         mc:Ignorable="d"
-        Title="ApplicationView" Height="300" Width="300">
-    <Grid>
-        
-    </Grid>
+        Title="Class Tracker" Height="800" Width="1200">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type local2:MainWindowViewModel}">
+            <local:DueListView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local2:DescriptionViewModel}">
+            <local:DescriptionView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local2:ScheduleViewModel}">
+            <local:ScheduleView/> 
+        </DataTemplate>
+    </Window.Resources>
+    <DockPanel LastChildFill="True">
+        <StackPanel x:Name="navigation" DockPanel.Dock="Left" Margin="5, 5, 0, 0">
+            <Button Content="Due List" Command="{Binding DueCommand}" Margin="2, 5, 0, 0"/>
+            <Button Content="Descriptions" Command="{Binding DescriptionCommand}" Margin="2, 5, 0 ,0" />
+            <Button Content="Schedule" Command="{Binding ScheduleCommand}" Margin="2, 5, 0 ,0" />
+        </StackPanel>
+        <ContentControl x:Name="Pages" DockPanel.Dock="Right" Content="{Binding SelectedViewModel}" />
+    </DockPanel>
 </Window>

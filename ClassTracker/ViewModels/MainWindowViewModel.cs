@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ClassTracker.Models;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -18,7 +16,6 @@ namespace ClassTracker.ViewModels
         public ObservableCollection<DueItem> Classes { get; set; }
         public List<string> EnrolledClasses { get; set; }
         public List<string> ImportanceList { get; set; }
-        
             
         public MainWindowViewModel()
         {
@@ -140,6 +137,9 @@ namespace ClassTracker.ViewModels
 
         #endregion
 
+        /// <summary>
+        /// Filter the list of classes that are displayed in the DataGridView
+        /// </summary>
         #region Filter Method
 
         private DelegateCommand filterCommand;
@@ -164,27 +164,36 @@ namespace ClassTracker.ViewModels
         } 
         #endregion
 
+        /// <summary>
+        /// Create a new DueItem to be inserted into the database
+        /// </summary>
         #region Create Method
         private readonly DelegateCommand createCommand;
         public ICommand CreateCommand => createCommand;
         public void CreateMethod()
         {
+            //If any of the properties are null, there was a problem loading the variables
             if (ClassName == null && DateDue == null && Importance == null)
                 throw new InvalidOperationException($"{nameof(ClassName)}, {nameof(DateDue)} or {nameof(Importance)} is null");
 
             DateTime formatDateDue;
+
             try
             {
+                //Convert the date String into type DateTime
                 formatDateDue = DateTime.Parse(DateDue);
             }
             catch(Exception ex)
             {
+                //String was in a incorrect format
                 throw new FormatException("The Date Due was in a bad format", ex);
             }
 
+            //Retrieves the letter from the end of the Course, this determines which semester the class is in
             var charArray = ClassName.ToArray();
             var getSemester = charArray.Last();
             string semester;
+
             switch (getSemester)
             {
                 case 'a':
@@ -196,7 +205,8 @@ namespace ClassTracker.ViewModels
                     break;
 
                 default:
-                    return;
+                    semester = "NA";
+                    break;
             }
 
             var addClass = new DueItem()
@@ -218,6 +228,9 @@ namespace ClassTracker.ViewModels
         }
         #endregion
 
+        /// <summary>
+        /// Update an existing DueItem, only the date due or the description can be changed
+        /// </summary>
         #region Update Method
 
         private DelegateCommand updateCommand;
@@ -244,6 +257,9 @@ namespace ClassTracker.ViewModels
 
         #endregion
 
+        /// <summary>
+        /// Delete a DueItem in the database
+        /// </summary>
         #region DeleteCommand
         private DelegateCommand deleteCommand;
         public ICommand DeleteCommand => deleteCommand;
@@ -263,6 +279,9 @@ namespace ClassTracker.ViewModels
 
         #endregion
 
+        /// <summary>
+        /// Refresh the list that is bound to the DataGridView
+        /// </summary>
         private void Refresh()
         {
             Classes.Clear();
@@ -275,6 +294,9 @@ namespace ClassTracker.ViewModels
             }
         }
 
+        /// <summary>
+        /// Predicate Function that returns whether the conditions have been met to add a new class
+        /// </summary>
         private void CheckIfCanAdd()
         {
             if (ClassName != null && DateDue != null && Importance != null)

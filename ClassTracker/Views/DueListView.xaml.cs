@@ -7,20 +7,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace ClassTracker.Views
 {
     /// <summary>
-    /// Interaction logic for DescriptionView.xaml
+    /// Interaction logic for DueListView.xaml
     /// </summary>
-    public partial class DescriptionView : UserControl
+    public partial class DueListView : UserControl
     {
         private IViewModel viewModel;
-
-        public DescriptionView()
+        public DueListView()
         {
             InitializeComponent();
-            this.viewModel = new DescriptionViewModel();
+            this.viewModel = new MainWindowViewModel();
             this.DataContext = viewModel;
         }
     }

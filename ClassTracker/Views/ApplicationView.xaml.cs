@@ -21,6 +21,7 @@ namespace ClassTracker.Views
     public partial class ApplicationView : Window
     {
         private ApplicationViewModel viewModel;
+
         public ApplicationView()
         {
             InitializeComponent();

@@ -1,14 +1,13 @@
-﻿<Window x:Class="ClassTracker.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-        xmlns:local="clr-namespace:ClassTracker"
-        mc:Ignorable="d"
-        Title="Class Tracker" Height="700" Width="1100">
+﻿<UserControl x:Class="ClassTracker.Views.DueListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:local="clr-namespace:ClassTracker.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1100">
     <DockPanel Margin="5">
-        <Frame x:Name="_mainFrame" />
         <TabControl DockPanel.Dock="Right" SelectedIndex="0">
             <TabItem Header="Filter Classes">
                 <StackPanel Width="300" Margin="4,0,0,0">
@@ -34,7 +33,6 @@
                     </WrapPanel>
                     <WrapPanel>
                         <TextBlock Text="Date Due: " FontWeight="Bold" Margin="2,7,0,0" />
-                        <!--<TextBox Margin="21,5,0,0" Width="200" Text="{Binding DateDue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
                         <DatePicker Margin="21, 5, 0, 0" Width="200" SelectedDate="{Binding DateDue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     </WrapPanel>
                     <WrapPanel>
@@ -42,7 +40,7 @@
                         <ComboBox Width="200" Margin="8,5,0,0" ItemsSource="{Binding ImportanceList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Importance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     </WrapPanel>
                     <WrapPanel>
-                        <TextBlock Text="Description : " FontWeight="Bold" Margin="2,7,0,0"/>
+                        <TextBlock Text="Description: " FontWeight="Bold" Margin="5.75,7,0,0"/>
                         <TextBox Margin="5,5,0,0" Width="200" Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="22" />
                     </WrapPanel>
                     <Button Content="Create Due Item" Width="125" Margin="125, 15, 0, 0" Command="{Binding CreateCommand}"/>
@@ -91,8 +89,8 @@
                 <DataGridTextColumn Width="100" Header="Semester" Binding="{Binding Semester, Mode=TwoWay}" IsReadOnly="True"/>
                 <DataGridTextColumn Width="200" Header="Date Due" Binding="{Binding Date_Due_Formatted, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" />
                 <DataGridTextColumn Width="100" Header="Importance" Binding="{Binding Importance, Mode=TwoWay}" IsReadOnly="True"/>
-                <DataGridTextColumn Width="250" Header="Description" Binding="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+                <DataGridTextColumn Width="232" Header="Description" Binding="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
             </DataGrid.Columns>
         </DataGrid>
     </DockPanel>
-</Window>
+</UserControl>

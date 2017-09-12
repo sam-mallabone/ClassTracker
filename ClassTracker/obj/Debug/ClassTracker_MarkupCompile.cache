@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Sam\Documents\Visual Studio 2017\Projects\ClassTracker\ClassTracker\obj\Debug\
+C:\Users\Sam\documents\visual studio 2017\Projects\ClassTracker\ClassTracker\obj\Debug\
 ClassTracker
 none
 false
 DEBUG;TRACE
-C:\Users\Sam\Documents\Visual Studio 2017\Projects\ClassTracker\ClassTracker\App.xaml
-3350113931
+C:\Users\Sam\documents\visual studio 2017\Projects\ClassTracker\ClassTracker\App.xaml
+4852605990
 2-1623464933
-16263960315
-79-875015680
-Views\ApplicationView.xaml;Views\DescriptionView.xaml;Views\MainWindow.xaml;
+181405902498
+79-1420265713
+Views\ApplicationView.xaml;Views\DescriptionView.xaml;Views\DueListView.xaml;Views\ScheduleView.xaml;
 
 False
 

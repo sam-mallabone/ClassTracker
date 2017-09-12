@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Sam\Documents\Visual Studio 2017\Projects\ClassTracker\ClassTracker\App.xaml
-3350113931
+4852605990
 2-1623464933
-20-709845623
+22432096560
 79-875015680
-Views\ApplicationView.xaml;Views\DescriptionView.xaml;Views\MainWindow.xaml;
+Views\ApplicationView.xaml;Views\DescriptionView.xaml;Views\DueListView.xaml;Views\ScheduleView.xaml;
 
 False
 
