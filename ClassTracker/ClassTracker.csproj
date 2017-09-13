@@ -92,6 +92,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\ClassDescription.cs">
+      <DependentUpon>CoursesDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CoursesDb.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoursesDb.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CoursesDb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoursesDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CoursesDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoursesDb.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DueItem.cs">
+      <DependentUpon>CoursesDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\ScheduleViewModel.cs" />
     <Compile Include="Views\ScheduleView.xaml.cs">
       <DependentUpon>ScheduleView.xaml</DependentUpon>
@@ -114,24 +135,6 @@
     </Compile>
     <Compile Include="ExtensionMethods\ExtensionMethods.cs" />
     <Compile Include="Interfaces\IViewModel.cs" />
-    <Compile Include="Models\DueItem.cs">
-      <DependentUpon>DueItemsDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DueItemsDb.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DueItemsDb.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DueItemsDb.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DueItemsDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DueItemsDb.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DueItemsDb.edmx</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\ApplicationViewModel.cs" />
     <Compile Include="ViewModels\DescriptionViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
@@ -167,12 +170,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Models\DueItemsDb.edmx">
+    <EntityDeploy Include="Models\CoursesDb.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DueItemsDb.Designer.cs</LastGenOutput>
+      <LastGenOutput>CoursesDb.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\DueItemsDb.edmx.diagram">
-      <DependentUpon>DueItemsDb.edmx</DependentUpon>
+    <None Include="Models\CoursesDb.edmx.diagram">
+      <DependentUpon>CoursesDb.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -189,18 +192,21 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="Models\DueItemsDb.Context.tt">
+    <Content Include="Models\CoursesDb.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DueItemsDb.edmx</DependentUpon>
-      <LastGenOutput>DueItemsDb.Context.cs</LastGenOutput>
+      <DependentUpon>CoursesDb.edmx</DependentUpon>
+      <LastGenOutput>CoursesDb.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\DueItemsDb.tt">
+    <Content Include="Models\CoursesDb.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DueItemsDb.edmx</DependentUpon>
-      <LastGenOutput>DueItemsDb.cs</LastGenOutput>
+      <DependentUpon>CoursesDb.edmx</DependentUpon>
+      <LastGenOutput>CoursesDb.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Semester2.PNG" />
+    <Resource Include="Resources\Semester1.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

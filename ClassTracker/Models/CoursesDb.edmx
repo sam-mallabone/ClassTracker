@@ -5,6 +5,19 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="CoursesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ClassDescription">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Course Number" Type="varchar(max)" Nullable="false" />
+          <Property Name="Course Name" Type="varchar(max)" Nullable="false" />
+          <Property Name="Instructor" Type="varchar(max)" Nullable="false" />
+          <Property Name="Office Hours" Type="varchar(max)" />
+          <Property Name="Semester" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar(max)" Nullable="false" />
+          <Property Name="Office" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="DueItem">
           <Key>
             <PropertyRef Name="id" />
@@ -17,6 +30,7 @@
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityContainer Name="CoursesModelStoreContainer">
+          <EntitySet Name="ClassDescription" EntityType="Self.ClassDescription" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DueItem" EntityType="Self.DueItem" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
@@ -24,6 +38,19 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CoursesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ClassDescription">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Course_Number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Course_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Instructor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Office_Hours" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Semester" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Office" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="DueItem">
           <Key>
             <PropertyRef Name="id" />
@@ -35,7 +62,8 @@
           <Property Name="Importance" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="CourseEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="CoursesEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ClassDescriptions" EntityType="Self.ClassDescription" />
           <EntitySet Name="DueItems" EntityType="Self.DueItem" />
         </EntityContainer>
       </Schema>
@@ -43,7 +71,21 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CoursesModelStoreContainer" CdmEntityContainer="CourseEntities">
+        <EntityContainerMapping StorageEntityContainer="CoursesModelStoreContainer" CdmEntityContainer="CoursesEntities1">
+          <EntitySetMapping Name="ClassDescriptions">
+            <EntityTypeMapping TypeName="CoursesModel.ClassDescription">
+              <MappingFragment StoreEntitySet="ClassDescription">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Course_Number" ColumnName="Course Number" />
+                <ScalarProperty Name="Course_Name" ColumnName="Course Name" />
+                <ScalarProperty Name="Instructor" ColumnName="Instructor" />
+                <ScalarProperty Name="Office_Hours" ColumnName="Office Hours" />
+                <ScalarProperty Name="Semester" ColumnName="Semester" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Office" ColumnName="Office" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="DueItems">
             <EntityTypeMapping TypeName="CoursesModel.DueItem">
               <MappingFragment StoreEntitySet="DueItem">

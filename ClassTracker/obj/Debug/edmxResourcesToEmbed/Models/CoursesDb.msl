@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CoursesModelStoreContainer" CdmEntityContainer="CoursesEntities1">
+    <EntitySetMapping Name="ClassDescriptions">
+      <EntityTypeMapping TypeName="CoursesModel.ClassDescription">
+        <MappingFragment StoreEntitySet="ClassDescription">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Course_Number" ColumnName="Course Number" />
+          <ScalarProperty Name="Course_Name" ColumnName="Course Name" />
+          <ScalarProperty Name="Instructor" ColumnName="Instructor" />
+          <ScalarProperty Name="Office_Hours" ColumnName="Office Hours" />
+          <ScalarProperty Name="Semester" ColumnName="Semester" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Office" ColumnName="Office" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DueItems">
+      <EntityTypeMapping TypeName="CoursesModel.DueItem">
+        <MappingFragment StoreEntitySet="DueItem">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Date_Due" ColumnName="Date Due" />
+          <ScalarProperty Name="Semester" ColumnName="Semester" />
+          <ScalarProperty Name="Importance" ColumnName="Importance" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

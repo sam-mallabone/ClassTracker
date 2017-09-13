@@ -11,9 +11,7 @@ namespace ClassTracker.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Globalization;
-    using System.Linq;
 
     public partial class DueItem
     {
@@ -50,12 +48,12 @@ namespace ClassTracker.Models
                     //The Item is Overdue
                     return 0;
                 }
-                else if(difference < 4)
+                else if (difference < 4)
                 {
                     //The Item is Urgent
                     return 1;
                 }
-                else if(difference < 7)
+                else if (difference < 7)
                 {
                     //The Item is SomeWhat Urgent
                     return 2;

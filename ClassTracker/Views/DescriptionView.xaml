@@ -5,8 +5,21 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ClassTracker.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <TextBlock Text="To Do Later" />
-    </Grid>
+             d:DesignHeight="800" d:DesignWidth="1100">
+    <DockPanel>
+        <TabControl Margin="5" DockPanel.Dock="Left">
+            <StackPanel>
+                <TextBlock Text="Class Descriptions" FontWeight="Black" FontSize="24" HorizontalAlignment="Center" />
+                <WrapPanel Margin="75, 50, 0, 0">
+                    <TextBlock Text="Select a Class:" FontWeight="Bold" FontSize="16" Margin="0, 3, 0 ,0 " />
+                    <ComboBox Height="22" Width="200" HorizontalAlignment="Left" Margin="10,5,0,0" ItemsSource="{Binding ClassList,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedClass, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </WrapPanel>
+                <WrapPanel Margin="125, 40, 0, 0">
+                    <TextBlock Text="Course Number: " FontWeight="Bold" FontSize="16" />
+                    <TextBlock Text="{Binding CourseNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Width="200" />
+                </WrapPanel>
+            </StackPanel>
+        </TabControl>
+    </DockPanel>
+    
 </UserControl>

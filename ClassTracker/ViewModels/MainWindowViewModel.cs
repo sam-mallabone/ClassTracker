@@ -12,7 +12,7 @@ namespace ClassTracker.ViewModels
 {
     class MainWindowViewModel : IViewModel
     {
-        private CourseEntities databaseConnection;
+        private CoursesEntities1 databaseConnection;
         public ObservableCollection<DueItem> Classes { get; set; }
         public List<string> EnrolledClasses { get; set; }
         public List<string> ImportanceList { get; set; }
@@ -29,7 +29,7 @@ namespace ClassTracker.ViewModels
         
         public void InitializeComponents()
         {
-            using (databaseConnection = new CourseEntities())
+            using (databaseConnection = new CoursesEntities1())
             {
                 var classList = databaseConnection.DueItems
                                     .OrderBy(c => c.Date_Due)
@@ -152,7 +152,7 @@ namespace ClassTracker.ViewModels
 
             Classes.Clear();
 
-            using (databaseConnection = new CourseEntities())
+            using (databaseConnection = new CoursesEntities1())
             {
                 var filterList = databaseConnection.DueItems
                                     .Where(x => x.Class == SelectedFilterClass)
@@ -218,7 +218,7 @@ namespace ClassTracker.ViewModels
                 Description = Description
             };
 
-            using (databaseConnection = new CourseEntities())
+            using (databaseConnection = new CoursesEntities1())
             {
                 databaseConnection.DueItems.Add(addClass);
                 databaseConnection.SaveChanges();
@@ -237,7 +237,7 @@ namespace ClassTracker.ViewModels
         public ICommand UpdateCommand => updateCommand;
         public void UpdateClass()
         {
-            using (databaseConnection = new CourseEntities())
+            using (databaseConnection = new CoursesEntities1())
             {
                 var updateClass = databaseConnection.DueItems
                                        .Where(x => x.id == SelectedClass.id)
@@ -267,7 +267,7 @@ namespace ClassTracker.ViewModels
         {
             if (SelectedClass == null) { throw new InvalidOperationException($"{nameof(SelectedClass)} is null"); }
 
-            using (databaseConnection = new CourseEntities())
+            using (databaseConnection = new CoursesEntities1())
             {
                 databaseConnection.DueItems.Attach(SelectedClass);
                 databaseConnection.DueItems.Remove(SelectedClass);
@@ -285,7 +285,7 @@ namespace ClassTracker.ViewModels
         private void Refresh()
         {
             Classes.Clear();
-            using (databaseConnection = new CourseEntities())
+            using (databaseConnection = new CoursesEntities1())
             {
                 var classList = databaseConnection.DueItems
                                     .OrderBy(c => c.Date_Due);
