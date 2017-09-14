@@ -51,19 +51,11 @@
                     </Image>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Delete Due Item">
-                <StackPanel Width="300" Margin="4,0,0,0">
-                    <TextBlock Text="Delete the Selected User" HorizontalAlignment="Center" Margin="0,10,0,0" FontWeight="Black" FontSize="16"/>
-                    <Button Content="Delete" Width="125" Margin="125,15,0,0" Command="{Binding DeleteCommand}" />
-                    <Image Width="245" Height="200" Margin="0,162,0,0">
-                        <Image.Source>
-                            <BitmapImage DecodePixelWidth="245" DecodePixelHeight="200" UriSource="/Resources/western.jpg" />
-                        </Image.Source>
-                    </Image>
-                </StackPanel>
-            </TabItem>
         </TabControl>
         <DataGrid x:FieldModifier="public" x:Name="Classes" CanUserAddRows="False" AutoGenerateColumns="False" CanUserResizeColumns="False" ItemsSource="{Binding Classes, Mode=TwoWay}" SelectedItem="{Binding SelectedClass}" >
+            <DataGrid.InputBindings>
+                <KeyBinding Key="Delete" Command="{Binding DeleteCommand}" />
+            </DataGrid.InputBindings>
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="CellEditEnding">
                     <i:InvokeCommandAction Command="{Binding UpdateCommand}" />

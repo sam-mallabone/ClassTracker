@@ -20,9 +20,9 @@ namespace ClassTracker.ViewModels
         public MainWindowViewModel()
         {
             this.createCommand = new DelegateCommand(CreateMethod, () => (ClassName != null && DateDue != null && Importance != null));
-            this.deleteCommand = new DelegateCommand(DeleteClass, () => (SelectedClass != null));
             this.updateCommand = new DelegateCommand(UpdateClass);
             this.filterCommand = new DelegateCommand(FilterListExecute, () => (SelectedFilterClass != null));
+            this.deleteCommand = new DelegateCommand(DeleteItem);
             
             InitializeComponents();
         }
@@ -255,26 +255,29 @@ namespace ClassTracker.ViewModels
             }
         }
 
-        #endregion
-
         /// <summary>
-        /// Delete a DueItem in the database
+        /// Called when the user deletes a row from the table
         /// </summary>
-        #region DeleteCommand
         private DelegateCommand deleteCommand;
         public ICommand DeleteCommand => deleteCommand;
-        public void DeleteClass()
+        public void DeleteItem()
         {
-            if (SelectedClass == null) { throw new InvalidOperationException($"{nameof(SelectedClass)} is null"); }
+
+            if(SelectedClass == null)
+            {
+                throw new Exception();
+            }
 
             using (databaseConnection = new CoursesEntities1())
             {
-                databaseConnection.DueItems.Attach(SelectedClass);
-                databaseConnection.DueItems.Remove(SelectedClass);
+                var deletedClass = databaseConnection.DueItems
+                                       .Where(x => x.id == SelectedClass.id)
+                                            .FirstOrDefault();
+
+                databaseConnection.DueItems.Remove(deletedClass);
                 databaseConnection.SaveChanges();
             }
             Refresh();
-
         }
 
         #endregion
